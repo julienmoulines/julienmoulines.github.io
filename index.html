@@ -1,23 +1,29 @@
----
-layout: default
----
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+  </head>
+  <body>
+    <section class="overlay">
+      <h1>Inscription</h1>
+      <p>Creation de compte:</p>
+      <form action="submission.html" method="GET">
+        <!--Add the minlength and maxlength attributes to the input fields-->
+        <label for="username">Login:</label>
+        <br>
+        <input id="username" name="username" type="text" minlength="3" maxlength="15" required>
+        <br>
+        <label for="pw">Mot de passe:</label>
+        <br>
+        <input id="pw" name="pw" type="password" minlength="4" maxlength="15" required>
+        <br>
+        <div class="bouton">
+         <input type="submit" value="inscription">
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
