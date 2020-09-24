@@ -1,118 +1,135 @@
-body {
-  background-color: white;
-  font-family: 'Raleway', sans-serif;
-}
+$thick : 3px;
+$pad : 0.7em;
+$extra : calc(#{$pad} * 1.2);
+$color : #f26522;
 
-.navigation ul {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
 
-.navigation li {
-  font-weight: 100;
-  letter-spacing: 2px;
-  padding: 20px;
-}
+.laner {
+  background: #2d2d2d;
+  
+  a {
+    color: white;
+    padding: $pad $extra;
+    display: inline-block;
+    border: $thick solid transparent;
+    position: relative;
+    font-size: 1.5em;
+    cursor: pointer;
+    letter-spacing: 0.07em;
 
-.navigation  li.logo {
-  color: black;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 4px;
-}
+    .text {
+      // padding: 0 0.3em;
+      font-family: proxima-nova, monospace;
+      transform: translate3d(0,$pad,0);
+      display: block;
+      transition: transform 0.4s cubic-bezier(.2,0,0,1) 0.4s;
+    }
 
-#banner {
-  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_tahoe.jpeg");
-  background-size: cover;
-  background-position: bottom center;
-  height: 700px;
-  width: 100%;
-}
+    &:after {
+      position: absolute;
+      content: '';
+      bottom: -$thick;
+      left: $extra;
+      right: $extra;
+      height: $thick;
+      background: $color;
+      // z-index: -1;
+      transition: 
+        transform 0.8s cubic-bezier(1,0,.37,1) 0.2s,
+        right 0.2s cubic-bezier(.04,.48,0,1) 0.6s,
+        left 0.4s cubic-bezier(.04,.48,0,1) 0.6s;
+      transform-origin: left;
+    }
 
-#banner .content h1 {
-  border: 3px solid white;
-  position: relative;
-  top: 50px;
-  width: 400px;
-  margin: 0 auto;
-}
+  }
 
-#main {
-  margin: 0 auto;
-  padding: 40px;
-  text-align: center;
-  width: 400px;
-  height: 1000px;
-  overflow: scroll;
-}
+  .line {
+    position: absolute;
+    background: $color;
 
-h1 {
-  color: white;
-  font-size: 42px;
-  font-weight: 600;
-  text-align: center;
-}
+    &.-right,
+    &.-left {
+      width: $thick;
+      bottom: -$thick;
+      top: -$thick;
+      transform: scale3d(1,0,1);
+    }  
 
-h2 {
-  border: 1px dotted red;
-  color: red;
-  font-size: 14px;
-  line-height: 48px;
-  padding: 20px 30px;
-  margin: 30px 20px;
-  text-align: center;
-}
+    &.-top,
+    &.-bottom {
+      height: $thick;
+      left: -$thick;
+      right: -$thick;
+      transform: scale3d(0,1,1);
+    }
 
-h3 {
-  color: red;
-  font-size: 26px;
-  font-weight: 700;
-  padding: 20px 10px;
-}
+    &.-right {
+      right: -$thick;
+      transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.23s;
+      transform-origin: top;
+    }
 
-p {
-  color: grey;
-  font-size: 16px;
-  line-height: 48px;
-  margin-top: 60px;
-  padding: 10px 20px;
-}
+    &.-top {
+      top: -$thick;
+      transition: transform 0.08s linear 0.43s;
+      transform-origin: left;
+    }
 
-.pull-quote {
-  margin: 0 auto;
-  width: 400px;
-}
+    &.-left {
+      left: -$thick;
+      transition: transform 0.08s linear 0.51s;
+      transform-origin: bottom;
+    }
 
-.byline {
-  border-bottom: 1px solid LightGrey;
-  border-top: 1px solid LightGrey;
-  color: DarkGrey;
-  font-size: 14px;
-  font-weight: 200;
-}
+    &.-bottom {
+      bottom: -$thick;
+      transition: transform 0.3s cubic-bezier(1,0,.65,1.01);
+      transform-origin: right;
+    }  
+  }
 
-.share {
-  border: 1px solid LightGrey;
-  padding: 40px 0px;
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
+  a:hover,
+  a:active {
 
-.share a {
-  background: red;
-  border: 1px solid red;
-  border-radius: 3px;
-  color: white;
-  display: inline-block;
-  margin: 10px;
-  padding: 14px;
-  text-decoration: none;
-}
+    .text {
+      transform: translate3d(0,0,0);
+      transition: transform 0.6s cubic-bezier(.2,0,0,1) 0.4s;
+    }
 
-.share a:hover {
-  background: white;
-  border: 1px solid red;
-  color: red;
+    &:after {
+      transform: scale3d(0,1,1);
+      right: -$thick;
+      left: -$thick;
+      transform-origin: right;
+      transition: 
+        transform 0.2s cubic-bezier(1,0,.65,1.01) 0.17s,
+        right 0.2s cubic-bezier(1,0,.65,1.01),
+        left 0s 0.3s;
+    }
+
+    .line {
+      transform: scale3d(1,1,1);
+
+      &.-right {
+        transition: transform 0.1s cubic-bezier(1,0,.65,1.01) 0.2s;
+        transform-origin: bottom;
+      }
+
+      &.-top {
+        transition: transform 0.08s linear 0.4s;
+        transform-origin: right;
+      }
+
+      &.-left {
+        transition: transform 0.08s linear 0.48s;
+        transform-origin: top;
+      }
+
+      &.-bottom {
+        transition: transform 0.5s cubic-bezier(0,.53,.29,1) 0.56s;
+        transform-origin: left;
+      }
+    }
+
+  }
 }
