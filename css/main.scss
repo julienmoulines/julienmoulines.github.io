@@ -3,6 +3,13 @@ $pad : 0.7em;
 $extra : calc(#{$pad} * 1.2);
 $color : #f26522;
 
+#img{
+  text-align: center
+}
+
+#titre_home{
+  text-align: center
+}
 
 .laner {
   background: #2d2d2d;
